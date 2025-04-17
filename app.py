@@ -3,16 +3,18 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 import os
+from dotenv import load_dotenv
 import sys
   
-  
+load_dotenv()
+
 app = Flask(__name__)
    
-app.secret_key = 'abcd2123445'  
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'sidd1234'
-app.config['MYSQL_DB'] = 'library-system'
+app.secret_key = os.getenv('SECRET_KEY', 'abcd2123445')
+app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST', 'localhost')
+app.config['MYSQL_USER'] = os.getenv('MYSQL_USER', 'root')
+app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD', 'sidd1234')
+app.config['MYSQL_DB'] = os.getenv('MYSQL_DB', 'library-system')
   
 mysql = MySQL(app)
 
