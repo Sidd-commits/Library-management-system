@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Add New Book</h2>
+        {% if msg %}
+            <div class="alert alert-danger">{{ msg }}</div>
+        {% endif %}
+        <form method="post" action="{{ url_for('save_book') }}">
+            <div class="form-group">
+                <label for="name">Book Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter book name" required>
+            </div>
+            <div class="form-group">
+                <label for="isbn">ISBN:</label>
+                <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Enter ISBN" required>
+            </div>
+            <div class="form-group">
+                <label for="no_of_copy">Number of Copies:</label>
+                <input type="number" class="form-control" id="no_of_copy" name="no_of_copy" placeholder="Enter number of copies" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <select class="form-control" id="author" name="author" required>
+                    <option value="">Select Author</option>
+                    {% for author in authors %}
+                        <option value="{{ author.authorid }}">{{ author.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="publisher">Publisher:</label>
+                <select class="form-control" id="publisher" name="publisher" required>
+                    <option value="">Select Publisher</option>
+                    {% for publisher in publishers %}
+                        <option value="{{ publisher.publisherid }}">{{ publisher.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category" name="category" required>
+                    <option value="">Select Category</option>
+                    {% for category in categories %}
+                        <option value="{{ category.categoryid }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rack">Rack:</label>
+                <select class="form-control" id="rack" name="rack" required>
+                    <option value="">Select Rack</option>
+                    {% for rack in racks %}
+                        <option value="{{ rack.rackid }}">{{ rack.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select class="form-control" id="status" name="status" required>
+                    <option value="Enable">Enable</option>
+                    <option value="Disable">Disable</option>
+                </select>
+            </div>
+            <input type="hidden" name="action" value="addBook">
+            <button type="submit" class="btn btn-primary btn-block">Add Book</button>
+        </form>
+    </div>
+</body>
+</html>

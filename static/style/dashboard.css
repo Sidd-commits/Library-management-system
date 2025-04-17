@@ -1,0 +1,82 @@
+/* General Layout Enhancements */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h6 {
+  color: #343a40;
+}
+
+.container-fluid {
+  padding: 20px;
+}
+
+/* Card Enhancements */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card .card-block {
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  color: #fff;
+}
+
+.card .rotate {
+  margin-bottom: 10px;
+}
+
+.card .display-1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Header Styling */
+.header {
+  background: linear-gradient(90deg, #004aad, #0096ff);
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Link Styling inside Cards */
+.card a {
+  color: white;
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .header h1 {
+      margin-bottom: 10px;
+  }
+}

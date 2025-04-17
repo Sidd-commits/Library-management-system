@@ -1,0 +1,79 @@
+{% include 'header.html' %}
+<script src="{{ url_for('static',filename='js/books.js') }}"></script>
+<body>
+  <div class="container-fluid" id="main">
+	{% include 'top_menus.html' %}  	
+    <div class="row row-offcanvas row-offcanvas-left">   
+	  {% include 'left_menus.html' %}	
+      <div class="col-md-9 col-lg-10 main"> 
+		<h3>Edit Book</h3>
+		<br>
+        {% for book in books %}
+        <form method="post" action="{{ url_for('save_book') }}">
+            <div class="form-group">
+                <label for="name">Book Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ books[0].name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="isbn">ISBN:</label>
+                <input type="text" class="form-control" id="isbn" name="isbn" value="{{ books[0].isbn }}" required>
+            </div>
+            <div class="form-group">
+                <label for="no_of_copy">Number of Copies:</label>
+                <input type="number" class="form-control" id="no_of_copy" name="no_of_copy" value="{{ books[0].no_of_copy }}" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <select class="form-control" id="author" name="author" required>
+                    {% for author in authors %}
+                        <option value="{{ author.authorid }}" {% if author.authorid == books[0].authorid %}selected{% endif %}>{{ author.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="publisher">Publisher:</label>
+                <select class="form-control" id="publisher" name="publisher" required>
+                    {% for publisher in publishers %}
+                        <option value="{{ publisher.publisherid }}" {% if publisher.publisherid == books[0].publisherid %}selected{% endif %}>{{ publisher.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category" name="category" required>
+                    {% for category in categories %}
+                        <option value="{{ category.categoryid }}" {% if category.categoryid == books[0].categoryid %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rack">Rack:</label>
+                <select class="form-control" id="rack" name="rack" required>
+                    {% for rack in racks %}
+                        <option value="{{ rack.rackid }}" {% if rack.rackid == books[0].rackid %}selected{% endif %}>{{ rack.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select class="form-control" id="status" name="status" required>
+                    <option value="Enable" {% if books[0].status == 'Enable' %}selected{% endif %}>Enable</option>
+                    <option value="Disable" {% if books[0].status == 'Disable' %}selected{% endif %}>Disable</option>
+                </select>
+            </div>
+            <input type="hidden" name="bookid" value="{{ books[0].bookid }}">
+            <input type="hidden" name="action" value="updateBook">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        {% endfor %}	
+    </div>
+			      
+        <hr>         
+       </div>       
+      </div>     
+    </div>
+
+	
+	</div>	
+  </body>
+</html>
