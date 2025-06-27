@@ -1,4 +1,4 @@
-# Library Management System
+# Library Management System.
 
 A modern and efficient Library Management System built with Flask and MySQL. This system provides a complete solution for managing library operations including book management, user management, and book issuing.
 
